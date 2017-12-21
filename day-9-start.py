@@ -14,7 +14,7 @@ sed eget nisl integer venenatis mollis posuere ${total}
 Habitasse dui nunc!
 """
 
-    def add_user(self, name, amount):
+    def add_user(self, name, amount, email=None):
         # name=name.capitalize()
         name = name[0].upper() + name[1:].lower()
         amount = "%.2f" % (amount)
@@ -25,6 +25,8 @@ Habitasse dui nunc!
         today = datetime.date.today()
         date_text = '{today.month}/{today.day}/{today.year}'.format(today=today)
         detail['date'] = date_text
+        if email is not None:
+            detail["email"]=email
         self.user_details.append(detail)
 
     def get_details(self):
@@ -48,7 +50,7 @@ Habitasse dui nunc!
 
 
 obj = MessageUser()
-obj.add_user("Justin", 123.32)
+obj.add_user("Justin", 123.32, email="hello@example.com")
 obj.add_user("joHn", 94.65)
 obj.add_user("Emille", 124.56)
 obj.add_user("Jim", 323.4)
